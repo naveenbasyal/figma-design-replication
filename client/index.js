@@ -12,7 +12,7 @@ function closeOverlay() {
 
 document.querySelector('.overlay__form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log("document-->", document.getElementById('stage'));
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('countrycode').value + document.getElementById('phone').value;
@@ -20,6 +20,13 @@ document.querySelector('.overlay__form').addEventListener('submit', async (e) =>
     const applyNowBtn = document.querySelector('.apply-now-btn');
     applyNowBtn.textContent = 'Loading...';
     applyNowBtn.disabled = true;
+    // validation
+    if (name === '' || email === '' || phone === '' || stage === '') {
+        alert('All fields are required');
+        applyNowBtn.textContent = 'Apply Now';
+        applyNowBtn.disabled = false;
+        return;
+    }
     try {
         const response = await fetch('http://localhost:8000/api/user/apply', {
             method: 'POST',
