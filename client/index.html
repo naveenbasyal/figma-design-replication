@@ -229,7 +229,7 @@
         </div>
       </div>
     </section>
-    <!-- Overlay Form -->
+    <!-------------------------- Overlay Form ------------------->
     <div id="overlay" class="overlay">
       <div class="overlay-content">
         <div class="overlay-header">
@@ -239,11 +239,18 @@
           </div>
           <p>Only 4 Spots Left!</p>
         </div>
-        <form>
-          <input type="text" name="name" placeholder="Your name" required />
+        <form class="overlay__form">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your name"
+            required
+          />
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="Your Email Id"
             required
           />
@@ -266,16 +273,17 @@
                 width: 100%;
               "
               type="tel"
+              id="phone"
               name="phone"
               placeholder="Your mobile number"
               required
             />
           </div>
-          <select name="stage" required>
+          <select name="stage" required id="stage">
             <option value="" disabled selected>Select Baby Stage</option>
-            <option value="1">0-6 Months</option>
-            <option value="2">6-12 Months</option>
-            <option value="3">12-18 Months</option>
+            <option value="0-6 Months">0-6 Months</option>
+            <option value="6-12 Months">6-12 Months</option>
+            <option value="12-18 Months">12-18 Months</option>
           </select>
           <button type="submit">Apply Now</button>
         </form>
@@ -285,7 +293,6 @@
         </p>
         <div class="security-icons">
           <img src="./assets/Group 290773.png" alt="avast" />
-          
         </div>
       </div>
     </div>
