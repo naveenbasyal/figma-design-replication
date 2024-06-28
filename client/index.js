@@ -12,7 +12,7 @@ function closeOverlay() {
 
 document.querySelector('.overlay__form').addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('countrycode').value + document.getElementById('phone').value;
@@ -21,33 +21,28 @@ document.querySelector('.overlay__form').addEventListener('submit', async (e) =>
     applyNowBtn.textContent = 'Loading...';
     applyNowBtn.disabled = true;
     // validation
-    if (name === '' || email === '' || phone === '' || stage === '') {
+    if(name === '' || email === '' || phone === '' || stage === ''){
         alert('All fields are required');
         applyNowBtn.textContent = 'Apply Now';
         applyNowBtn.disabled = false;
         return;
     }
     try {
-        console.log({ name, email, phone, stage })
-        const response = await fetch('https://figma-design-replication-2togo9qkd-naveenbasyals-projects.vercel.app/api/user/apply', {
+        const response = await fetch('http://localhost:8000/api/user/apply', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, email, phone, stage }),
-            mode: 'no-cors'
+            body: JSON.stringify({ name, email, phone, stage })
         })
-        console.log("response", response)
         const data = await response.json();
         console.log("data", data)
         alert(data.message)
         return data;
 
-    } catch (error) {
-        console.log("error aya", error);
-        alert("error occured", error.message)
+    } catch (err) {
+        console.log("error aya", err);
+        alert("error occured", err.message)
 
     }
     finally {
