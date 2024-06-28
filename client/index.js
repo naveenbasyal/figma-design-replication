@@ -28,21 +28,26 @@ document.querySelector('.overlay__form').addEventListener('submit', async (e) =>
         return;
     }
     try {
-        const response = await fetch('http://localhost:8000/api/user/apply', {
+        console.log({ name, email, phone, stage })
+        const response = await fetch('https://figma-design-replication-2togo9qkd-naveenbasyals-projects.vercel.app/api/user/apply', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+
             },
-            body: JSON.stringify({ name, email, phone, stage })
+            body: JSON.stringify({ name, email, phone, stage }),
+            mode: 'no-cors'
         })
+        console.log("response", response)
         const data = await response.json();
         console.log("data", data)
         alert(data.message)
         return data;
 
     } catch (error) {
-        console.log("error aya", err);
-        alert("error occured", err.message)
+        console.log("error aya", error);
+        alert("error occured", error.message)
 
     }
     finally {

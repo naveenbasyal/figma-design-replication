@@ -7,6 +7,10 @@ import cors from 'cors'
 const app = express();
 const port = process.env.PORT || 8000;
 configDotenv();
+const corsOptions = {
+    origin: 'https://figma-design-replication-2togo9qkd-naveenbasyals-projects.vercel.app',
+    optionsSuccessStatus: 200
+}
 
 app.use(cors())
 
